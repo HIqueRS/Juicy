@@ -31,11 +31,13 @@ public class Mouse : MonoBehaviour
             if (Input.GetMouseButtonDown(0) && !get)
             {
                 //do the animation
+                item.transform.GetComponent<Animator>().SetBool("Grab", true);
                 get = true;
             }
             else if(Input.GetMouseButtonUp(0) && get)
             {
-                //stops the animation  
+                //stops the animation 
+                item.transform.GetComponent<Animator>().SetBool("Grab", false);
                 get = false;
             }
 
