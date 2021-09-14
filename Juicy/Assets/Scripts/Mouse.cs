@@ -32,6 +32,7 @@ public class Mouse : MonoBehaviour
             {
                 //do the animation
                 item.transform.GetComponent<Animator>().SetBool("Grab", true);
+                item.GetChild(0).GetComponent<ParticleSystem>().Play();
                 get = true;
             }
             else if(Input.GetMouseButtonUp(0) && get)
@@ -49,13 +50,24 @@ public class Mouse : MonoBehaviour
                 //Debug.Log("eita");
             }
 
+            if (Input.GetMouseButtonDown(1) && !get)
+            {
+                //do the animation
+                item.transform.GetComponent<Animator>().SetBool("Kill", true);
+                
+            }
+
         }
 
         if (hit)
         {
             if (hit.transform.CompareTag("Grab"))
             {
-                item = hit.transform;
+                if(!get)
+                {
+                    item = hit.transform;
+                }
+               
 
             }
             else if(!get)
